@@ -12,24 +12,29 @@
 
   <h2>Contact Us</h2>
 
-  <form action="mailto:gamingwithpatron@gmail.com" method="post" enctype="text/plain">
+    <form action="https://formsubmit.co/gamingwithpatron@gmail.com" method="post" enctype="multipart/form-data">
     <label for="name">Name:</label>
-    <input type="text" id="name" name="name" placeholder="Your Facebook Name" required><br>
+    <input name="Name"  type="text" id="name" placeholder="Your Facebook Name" required><br>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required><br>
+    <!-- <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br> -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://patrong100.github.io/ThankYou/">
 
+    
     <label for="datetime">Date and Time:</label>
-    <input type="datetime-local" id="datetime" name="datetime" required><br>
+    <input name="Date & Time" type="datetime-local" id="datetime"  required><br>
 
     <br>
 
     <label for="message">Message:</label><br>
-    <textarea id="message" name="message" rows="4" cols="50"
+    <textarea name="Message" id="message"  rows="4" cols="50"
       placeholder="Please be as precise and brief as possible. Do mention the game, username and time so we can assist you better."></textarea><br>
+      
 
     <input type="submit" value="Send">
   </form>
+
 
 </body>
 
