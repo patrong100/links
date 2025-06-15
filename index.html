@@ -1,152 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Patron Gaming - Casino Access</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at center, #111, #000);
+      color: #fff;
+      text-align: center;
+    }
 
-    <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    .header {
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #ffce00, #ff2c00);
+      color: #000;
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 3px #fff;
+    }
+
+    .games {
+      max-width: 800px;
+      margin: auto;
+      padding: 30px 15px;
+    }
+
+    .button {
+      background: linear-gradient(to right, #ff5f6d, #ffc371);
+      border: none;
+      border-radius: 30px;
+      padding: 15px 30px;
+      margin: 10px 0;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #000;
+      cursor: pointer;
+      width: 80%;
+      max-width: 300px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ffcf66;
+    }
+
+    #freeplay-section, #contact-section {
+      display: none;
+      background-color: #222;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #ffcc00;
+    }
+
+    a {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border-color: #444;
+      margin: 40px auto;
+      width: 60%;
+    }
+
+    input, textarea {
+      width: 80%;
+      max-width: 500px;
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    #thank-you {
+      color: #0f0;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="header games">
-        <h1>Welcome to Patron Gaming!</h1>
 
+  <div class="header">
+    🎰 Welcome to Patron Gaming! 🎲
+  </div>
+
+  <div class="games">
+    <form action="http://download.gamevault999.com"><button class="button" type="submit">🎮 GAMEVAULT</button></form>
+    <form action="http://m.lasvegassweeps.com"><button class="button" type="submit">🎰 VEGAS SWEEPS</button></form>
+    <form action="http://dl.highstakesweeps.com"><button class="button" type="submit">💰 HIGHSTAKESWEEPS</button></form>
+    <form action="https://dl.juwa777.com"><button class="button" type="submit">🔥 JUWA</button></form>
+    <form action="https://pandamaster.vip:8888/index.html"><button class="button" type="submit">🐼 PANDAMASTER</button></form>
+    <form action="http://risingstar.vip:8580/index.html"><button class="button" type="submit">🌟 RISING STAR</button></form>
+    <form action="http://start.firekirin.xyz:8580/index.html"><button class="button" type="submit">🐉 FIRE KIRIN</button></form>
+    <form action="http://start.orionstars.vip:8580/index.html"><button class="button" type="submit">🌌 ORIONSTARS</button></form>
+    <form action="https://milkywayapp.xyz"><button class="button" type="submit">🚀 MILKYWAY</button></form>
+    <form action="http://www.vblink777.club"><button class="button" type="submit">🎰 VBLINK</button></form>
+    <form action="http://www.ultrapanda.mobi/"><button class="button" type="submit">🐼 ULTRAPANDA</button></form>
+    <form action="https://bet777.eu/play/?"><button class="button" type="submit">💵 RIVERSWEEPS</button></form>
+    <form action="https://m.gamesirius999.com"><button class="button" type="submit">🌠 SIRIUS</button></form>
+    <form action="http://www.cashmachine777.com"><button class="button" type="submit">💸 CASHMACHINE</button></form>
+
+    <hr>
+
+    <form action="https://sallapay.pro/382/purchase">
+      <button class="button" type="submit">💳 Deposit Now!</button>
+    </form>
+
+    <button class="button" type="button" onclick="toggleFreeplay()">🎁 Earn Freeplay</button>
+    <div id="freeplay-section">
+      <p>Please report the following Facebook accounts and send us a screenshot to claim your freeplay:</p>
+      <p><a href="https://www.facebook.com/patrongaming55" target="_blank">📌 Fake Patron Gaming Page</a></p>
+      <p><a href="https://www.facebook.com/sakuragamestationn/" target="_blank">⚠️ Malicious Actor</a></p>
     </div>
-    <div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
+
+    <br><br>
+
+    <button class="button" type="button" onclick="toggleContact()">📞 Contact Us</button>
+    <div id="contact-section">
+      <form id="contact-form" action="https://formsubmit.co/gamingwithpatron@gmail.com" method="POST" onsubmit="showThankYou(event)">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="name" placeholder="Your Name" required><br>
+        <input type="email" name="email" placeholder="Your Email" required><br>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea><br>
+        <button class="button" type="submit">📨 Send Message</button>
+      </form>
+      <p id="thank-you" style="display:none;">✅ Thank you! Your message has been sent.</p>
     </div>
-    <div class="games">
-        <form action="http://download.gamevault999.com">
-            <button class="button" type="submit">GAMEVAULT</button>
-        </form>
+  </div>
 
-        <br>
-
-        <form action="http://m.lasvegassweeps.com">
-            <button class="button" type="submit">VEGAS SWEEPS</button>
-        </form>
-
-        <br>
-
-        <form action="http://dl.highstakesweeps.com">
-            <button class="button" type="submit">HIGHSTAKESWEEPS</button>
-        </form>
-
-        <br>
-
-        <form action="https://dl.juwa777.com">
-            <button class="button" type="submit">JUWA</button>
-        </form>
-
-        <br>
-
-        <form action="https://pandamaster.vip:8888/index.html">
-            <button class="button" type="submit">PANDAMASTER</button>
-        </form>
-
-        <br>
-
-        <form action="http://risingstar.vip:8580/index.html">
-            <button class="button" type="submit">RISING STAR</button>
-        </form>
-
-        <br>
-
-        <br>
-
-        <form action="http://start.firekirin.xyz:8580/index.html">
-            <button class="button" type="submit">FIRE KIRIN</button>
-        </form>
-
-        <br>
-
-        <form action="http://start.orionstars.vip:8580/index.html">
-            <button class="button" type="submit">ORIONSTARS</button>
-        </form>
-
-        <br>
-
-        <form action="https://milkywayapp.xyz">
-            <button class="button" type="submit">MILKYWAY</button>
-        </form>
-
-        <br>
-
-        <form action="http://www.vblink777.club">
-            <button class="button" type="submit">VBLINK</button>
-        </form>
-
-        <br>
-
-        <form action="http://www.ultrapanda.mobi/">
-            <button class="button" type="submit">ULTRAPANDA</button>
-        </form>
-
-        <br>
-
-        <form action="https://bet777.eu/play/?">
-            <button class="button" type="submit">RIVERSWEEPS</button>
-        </form>
-
-        <br>
-
-        <form action="https://m.gamesirius999.com">
-            <button class="button" type="submit">SIRIUS</button>
-        </form>
-
-        <br>
-
-        <form action="http://www.cashmachine777.com">
-            <button class="button" type="submit">CASHMACHINE</button>
-        </form>
-        
-        <br>
-        <hr>
-        <form action="https://sallapay.pro/382/purchase">
-          <div>
-            <button class="button" type="submit">Deposit Now!</button>
-          </div>
-            <br>
-            <style>
-    #freeplay-section {
-        display: none;
-        margin-top: 10px;
-    }
-</style>
-
-<!-- Place this within your existing <form> tag -->
-<div>
-    <button class="button" type="button" onclick="toggleFreeplay()">Earn Freeplay</button>
-</div>
-
-<div id="freeplay-section">
-    <p>Please report the following Facebook accounts and send us the screenshot to claim your freeplay:</p>
-    <p><a href="https://www.facebook.com/patrongaming55" target="_blank">Fake Patron Gaming Page</a></p>
-    <p><a href="https://www.facebook.com/sakuragamestationn/" target="_blank">Malicious Actor</a></p>
-</div>
-
-<script>
+  <script>
     function toggleFreeplay() {
-        const section = document.getElementById('freeplay-section');
-        if (section.style.display === 'none' || section.style.display === '') {
-            section.style.display = 'block';
-        } else {
-            section.style.display = 'none';
-        }
+      const section = document.getElementById('freeplay-section');
+      section.style.display = (section.style.display === 'none' || section.style.display === '') ? 'block' : 'none';
     }
-</script>          
-        </form>
-        <br>
-        <button class="button games contact" onclick="window.location.href = 'contact.html';">Contact Us</button>
 
-    </div>
-    <br>
+    function toggleContact() {
+      const section = document.getElementById('contact-section');
+      section.style.display = (section.style.display === 'none' || section.style.display === '') ? 'block' : 'none';
+    }
+
+    function showThankYou(event) {
+      event.preventDefault();
+
+      const form = document.getElementById('contact-form');
+      const thankYou = document.getElementById('thank-you');
+
+      // Simulate submit
+      const formData = new FormData(form);
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          form.reset();
+          form.style.display = 'none';
+          thankYou.style.display = 'block';
+        } else {
+          thankYou.innerText = '❌ Something went wrong. Please try again.';
+          thankYou.style.display = 'block';
+        }
+      }).catch(() => {
+        thankYou.innerText = '❌ Failed to send. Please check your connection.';
+        thankYou.style.display = 'block';
+      });
+    }
+  </script>
 
 </body>
-
 </html>
