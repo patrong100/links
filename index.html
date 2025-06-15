@@ -27,7 +27,7 @@
 
         <br>
 
-        <form action="http://m.lasvegassweeps.com/">
+        <form action="http://m.lasvegassweeps.com">
             <button class="button" type="submit">VEGAS SWEEPS</button>
         </form>
 
@@ -104,14 +104,43 @@
         <form action="http://www.cashmachine777.com">
             <button class="button" type="submit">CASHMACHINE</button>
         </form>
-
+        
         <br>
         <hr>
-        <br>
-        <form action="https://sallapay.pro/patron-gaming1/deposit">
+        <form action="https://sallapay.pro/382/purchase">
+          <div>
             <button class="button" type="submit">Deposit Now!</button>
-        </form>
+          </div>
+            <br>
+            <style>
+    #freeplay-section {
+        display: none;
+        margin-top: 10px;
+    }
+</style>
 
+<!-- Place this within your existing <form> tag -->
+<div>
+    <button class="button" type="button" onclick="toggleFreeplay()">Earn Freeplay</button>
+</div>
+
+<div id="freeplay-section">
+    <p>Please report the following Facebook accounts and send us the screenshot to claim your freeplay:</p>
+    <p><a href="https://www.facebook.com/patrongaming55" target="_blank">Fake Patron Gaming Page</a></p>
+    <p><a href="https://www.facebook.com/sakuragamestationn/" target="_blank">Malicious Actor</a></p>
+</div>
+
+<script>
+    function toggleFreeplay() {
+        const section = document.getElementById('freeplay-section');
+        if (section.style.display === 'none' || section.style.display === '') {
+            section.style.display = 'block';
+        } else {
+            section.style.display = 'none';
+        }
+    }
+</script>          
+        </form>
         <br>
         <button class="button games contact" onclick="window.location.href = 'contact.html';">Contact Us</button>
 
