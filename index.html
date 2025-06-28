@@ -1,185 +1,434 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Patron Gaming - Casino Access</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Patron Gaming</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&display=swap');
+
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: radial-gradient(circle at center, #111, #000);
-      color: #fff;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, #0e1117, #1a1f2a);
+      color: #d8d6c9;
       text-align: center;
-    }
-
-    .header {
-      padding: 40px 20px;
-      background: linear-gradient(135deg, #ffce00, #ff2c00);
-      color: #000;
-      font-size: 2.5rem;
-      font-weight: bold;
-      text-shadow: 1px 1px 3px #fff;
-    }
-
-    .games {
-      max-width: 800px;
-      margin: auto;
-      padding: 30px 15px;
-    }
-
-    .button {
-      background: linear-gradient(to right, #ff5f6d, #ffc371);
-      border: none;
-      border-radius: 30px;
-      padding: 15px 30px;
-      margin: 10px 0;
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: #000;
-      cursor: pointer;
-      width: 80%;
-      max-width: 300px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #ffcf66;
-    }
-
-    #freeplay-section, #contact-section {
-      display: none;
-      background-color: #222;
-      margin-top: 20px;
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid #ffcc00;
+      min-height: 100vh;
     }
 
     a {
-      color: #ffcc00;
       text-decoration: none;
+      color: #72a0c1;
+      font-weight: 600;
+      transition: color 0.3s ease;
     }
 
-    a:hover {
-      text-decoration: underline;
+    a:hover,
+    a:focus {
+      color: #d4af37;
+      outline: none;
     }
 
-    hr {
-      border-color: #444;
-      margin: 40px auto;
+    /* Header */
+    .header {
+      padding: 40px 20px;
+      background: linear-gradient(to right, #12151c, #222a41);
+      border-bottom: 3px solid #d4af37;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+      user-select: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #d4af37;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: nowrap;
+      white-space: wrap;
+    }
+
+    .logo span {
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: #a99f6b;
+      user-select: text;
+      flex-wrap: wrap;
+      white-space: wrap;
+    }
+
+    /* Games container */
+    .games {
+      max-width: 820px;
+      margin: 40px auto 20px;
+      padding: 0 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: center;
+    }
+
+    /* Buttons container for Deposit and Freeplay */
+    .action-buttons {
+      max-width: 820px;
+      margin: 40px auto 60px;
+      padding: 0 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: center;
+    }
+
+    /* Buttons */
+    form {
+      flex: 1 1 240px;
+      min-width: 220px;
+    }
+
+    .button {
+      background: linear-gradient(145deg, #2a3146, #1b1f2d);
+      border: 2px solid #d4af37;
+      border-radius: 30px;
+      padding: 16px 28px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #d4af37;
+      cursor: pointer;
+      width: 100%;
+      box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+      transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+      user-select: none;
+    }
+
+    .button:hover,
+    .button:focus {
+      background: #d4af37;
+      color: #121212;
+      border-color: #f8e463;
+      box-shadow:
+        0 0 12px 2px #f8e463,
+        0 4px 14px rgba(255, 255, 160, 0.6);
+      outline: none;
+    }
+
+    /* Freeplay toggle */
+    .freeplay-toggle {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Freeplay panel */
+    .freeplay {
+      background: #222a41;
+      padding: 30px 25px;
+      margin: 25px auto 0;
+      border-radius: 16px;
+      max-width: 700px;
+      border: 2px solid #d4af37;
+      box-shadow:
+        0 6px 20px rgba(212, 175, 55, 0.3),
+        inset 0 0 10px rgba(255, 235, 150, 0.15);
+      display: none;
+      color: #e0d89f;
+      text-align: left;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      user-select: text;
+    }
+
+    .freeplay h3 {
+      margin-top: 0;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #d4af37;
+      margin-bottom: 12px;
+    }
+
+    .freeplay p a {
+      color: #f3e08c;
+    }
+
+    /* Separator line */
+    hr.separator {
+      margin: 50px auto;
       width: 60%;
+      border: 1px solid #444d63;
+      box-shadow: 0 0 6px #3f4660;
     }
 
-    input, textarea {
-      width: 80%;
-      max-width: 500px;
-      padding: 12px 15px;
+    /* Floating Contact Button */
+    .contact-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #d4af37;
+      color: #121212;
+      padding: 16px 24px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      box-shadow: 0 6px 18px rgba(212, 175, 55, 0.8);
+      cursor: pointer;
+      z-index: 1000;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-float:hover,
+    .contact-float:focus {
+      background-color: #f8e463;
+      outline: none;
+    }
+
+    /* Contact Modal */
+    .contact-modal {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 340px;
+      background: #1c2233;
+      border: 2px solid #d4af37;
+      border-radius: 14px;
+      padding: 22px 24px;
+      box-shadow: 0 14px 28px rgba(212, 175, 55, 0.7);
+      z-index: 1001;
+      animation: fadeIn 0.3s ease forwards;
+      color: #f1e8b8;
+      font-size: 1rem;
+      user-select: text;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .contact-modal h3 {
+      margin-top: 0;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #d4af37;
+    }
+
+    .close-btn {
+      float: right;
+      cursor: pointer;
+      font-weight: 700;
+      color: #a6933c;
+      font-size: 1.2rem;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+      color: #fff;
+      outline: none;
+    }
+
+    .contact-modal input,
+    .contact-modal textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 14px;
       border-radius: 8px;
       border: none;
+      background-color: #2a3146;
+      color: #d8d6c9;
       font-size: 1rem;
-      margin-bottom: 15px;
+      font-family: 'Open Sans', sans-serif;
+      resize: vertical;
+      transition: background-color 0.3s ease;
     }
 
-    textarea {
-      resize: vertical;
+    .contact-modal input:focus,
+    .contact-modal textarea:focus {
+      outline: none;
+      background-color: #3a4262;
+    }
+
+    .contact-modal button {
+      background: #d4af37;
+      color: #121212;
+      border: none;
+      padding: 14px 0;
+      width: 100%;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(212, 175, 55, 0.6);
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+
+    .contact-modal button:hover,
+    .contact-modal button:focus {
+      background-color: #f8e463;
+      outline: none;
     }
 
     #thank-you {
-      color: #0f0;
-      font-weight: bold;
-      margin-top: 20px;
+      color: #9fdf9f;
+      font-weight: 700;
+      margin-top: 18px;
+      display: none;
+      text-align: center;
     }
-    
-    .action-buttons {
+
+    /* Responsive tweaks */
+    @media (max-width: 480px) {
+      .games {
+        gap: 14px;
+      }
+
+      form {
+        flex-basis: 100%;
+      }
+
+      .button {
+        font-size: 1rem;
+        padding: 14px 22px;
+      }
+
+      .contact-modal {
+        width: 90vw;
+        bottom: 70px;
+        right: 5%;
+      }
+
+      .action-buttons {
         flex-direction: column;
         gap: 20px;
       }
+
+      .contact-modal input,
+      .contact-modal textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 14px;
+        border-radius: 8px;
+        border: none;
+        background-color: #2a3146;
+        color: #d8d6c9;
+        font-size: 1rem;
+        font-family: 'Open Sans', sans-serif;
+        resize: vertical;
+        transition: background-color 0.3s ease;
+      }
+    }
   </style>
 </head>
+
 <body>
 
-  <div class="header">
-    🎰 Welcome to Patron Gaming! 🎲
-  </div>
-  
-  <section style="width: 100%; padding: 20px; box-sizing: border-box;">
-  <div class="action-buttons" style="display: flex; justify-content: center;">
-    <a href="https://t.me/patrongaming777" target="_blank" rel="noopener" 
-       style="display: inline-block; text-align: center; padding: 15px 20px; 
-              font-size: 1rem; color: white; background-color: #0088cc; 
-              border: none; border-radius: 8px; text-decoration: none;
-              max-width: 90%; box-sizing: border-box;">
-      📨 If our Facebook goes Down, Please Join Us on Telegram. 📨
-    </a>
-  </div>
-</section>
+  <header class="header" role="banner">
+    <div class="logo" aria-label="White Tiger Gaming logo">
+      🎰 Welcome to Patron Gaming! 🎲
+      <!--       <span style="display: inline;">— Play & Win Big!</span> -->
+    </div>
+  </header>
 
+  <section style="width: 100%; padding:1.25rem 0 0 0;; box-sizing: border-box;">
+    <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+      <a href="https://t.me/patrongaming" target="_blank" rel="noopener" style="display: inline-block; text-align: center; padding: 15px 20px; 
+             font-size: 1rem; color: white; background-color: #0088cc; 
+             border: none; border-radius: 8px; text-decoration: none;
+             max-width: 100%; box-sizing: border-box;">
+        📨 If our Facebook goes Down, Please Join Us on Telegram. 📨
+      </a>
+    </div>
+  </section>
 
-  <div class="games">
-    <form action="http://download.gamevault999.com"><button class="button" type="submit">🎮 GAMEVAULT</button></form>
-    <form action="http://m.lasvegassweeps.com"><button class="button" type="submit">🎰 VEGAS SWEEPS</button></form>
-    <form action="http://dl.highstakesweeps.com"><button class="button" type="submit">💰 HIGHSTAKESWEEPS</button></form>
-    <form action="https://dl.juwa777.com"><button class="button" type="submit">🔥 JUWA</button></form>
-    <form action="https://pandamaster.vip:8888/index.html"><button class="button" type="submit">🐼 PANDAMASTER</button></form>
-    <form action="http://risingstar.vip:8580/index.html"><button class="button" type="submit">🌟 RISING STAR</button></form>
-    <form action="http://start.firekirin.xyz:8580/index.html"><button class="button" type="submit">🐉 FIRE KIRIN</button></form>
-    <form action="http://start.orionstars.vip:8580/index.html"><button class="button" type="submit">🌌 ORIONSTARS</button></form>
-    <form action="https://milkywayapp.xyz"><button class="button" type="submit">🚀 MILKYWAY</button></form>
-    <form action="http://www.vblink777.club"><button class="button" type="submit">🎰 VBLINK</button></form>
-    <form action="http://www.ultrapanda.mobi/"><button class="button" type="submit">🐼 ULTRAPANDA</button></form>
-    <form action="https://bet777.eu/play/?"><button class="button" type="submit">💵 RIVERSWEEPS</button></form>
-    <form action="https://m.gamesirius999.com"><button class="button" type="submit">🌠 SIRIUS</button></form>
-    <form action="http://www.cashmachine777.com"><button class="button" type="submit">💸 CASHMACHINE</button></form>
-
-    <hr>
-
-    <form action="https://sallapay.pro/382/purchase">
-      <button class="button" type="submit">💳 Deposit Now!</button>
+  <section class="action-buttons" aria-label="Deposit and freeplay actions">
+    <form action="https://sallapay.pro/382/purchase" method="get" target="_blank" rel="noopener" aria-label="Deposit now">
+      <button class="button" type="submit">💳 Deposit Now</button>
     </form>
 
-    <button class="button" type="button" onclick="toggleFreeplay()">🎁 Earn Freeplay</button>
-    <div id="freeplay-section">
-      <p>Please report the following Facebook accounts and send us a screenshot to claim your freeplay:</p>
-      <p><a href="https://www.facebook.com/patrongaming55" target="_blank">📌 Fake Patron Gaming Page</a></p>
-      <p><a href="https://www.facebook.com/sakuragamestationn/" target="_blank">⚠️ Malicious Actor</a></p>
+    <div class="freeplay-toggle" aria-label="Claim freeplay toggle button">
+      <button class="button" type="button" onclick="toggleFreeplay()">🎁 Claim Freeplay</button>
     </div>
+  </section>
 
-    <br><br>
+  <section id="freeplay-section" class="contact-modal" aria-live="polite" aria-hidden="true" tabindex="-1">
+    <div class="close-btn" onclick="toggleFreeplay()">✖</div>
+    <h3>Freeplay Form:</h3>
+    <p>Please fill out the form below to claim your freeplay:</p>
+    <form id="freeplay-form" action="https://formsubmit.co/ajax/gamingwithpatron@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="text" name="telegram" placeholder="Telegram Username" required>
+      <button class="button" type="submit">Submit</button>
+    </form>
+    <p id="freeplay-thank-you" style="
+    display: none;
+    color: #9fdf9f;
+    font-weight: 700;
+    margin-top: 18px;
+    text-align: center;
+    animation: fadeIn 0.5s ease forwards;
+  ">
+      ✅ Thank you! Your Freeplay request has been received.
+    </p>
+  </section>
 
-    <button class="button" type="button" onclick="toggleContact()">📞 Contact Us</button>
-    <div id="contact-section">
-      <form id="contact-form" action="https://hook.us2.make.com/v94rsb6snmie4hgs405jxn9z4c2cdt04" method="POST" onsubmit="showThankYou(event)">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="name" placeholder="Your Name" required><br>
-        <input type="email" name="email" placeholder="Your Email" required><br>
-        <textarea name="message" rows="5" placeholder="Your Message" required></textarea><br>
-        <button class="button" type="submit">📨 Send Message</button>
-      </form>
-      <p id="thank-you" style="display:none;">✅ Thank you! Your message has been sent.</p>
-    </div>
-  </div>
+  <style>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 
   <script>
     function toggleFreeplay() {
-      const section = document.getElementById('freeplay-section');
-      section.style.display = (section.style.display === 'none' || section.style.display === '') ? 'block' : 'none';
+      const section = document.getElementById("freeplay-section");
+      section.style.display = section.style.display === "block" ? "none" : "block";
     }
-
-    function toggleContact() {
-      const section = document.getElementById('contact-section');
-      section.style.display = (section.style.display === 'none' || section.style.display === '') ? 'block' : 'none';
-    }
-
-    function showThankYou(event) {
-      event.preventDefault();
-
-      const form = document.getElementById('contact-form');
-      const thankYou = document.getElementById('thank-you');
-
-      // Simulate submit
+    document.getElementById('freeplay-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const thankYou = document.getElementById('freeplay-thank-you');
+      thankYou.style.display = 'none';
       const formData = new FormData(form);
       fetch(form.action, {
         method: "POST",
@@ -189,19 +438,133 @@
         }
       }).then(response => {
         if (response.ok) {
+          thankYou.textContent = "✅ Thank you! Your Freeplay request has been received. Please send a screenshot of your Telegram profile to us.";
+          thankYou.style.display = "block";
           form.reset();
-          form.style.display = 'none';
-          thankYou.style.display = 'block';
+          setTimeout(() => {
+            toggleFreeplay();
+            thankYou.style.display = "none";
+          }, 4000);
         } else {
-          thankYou.innerText = '❌ Something went wrong. Please try again.';
-          thankYou.style.display = 'block';
+          thankYou.textContent = "❌ Something went wrong. Please try again.";
+          thankYou.style.display = "block";
+          thankYou.style.color = "#ff9999";
         }
       }).catch(() => {
-        thankYou.innerText = '❌ Failed to send. Please check your connection.';
-        thankYou.style.display = 'block';
+        thankYou.textContent = "❌ Network error. Please try again.";
+        thankYou.style.display = "block";
+        thankYou.style.color = "#ff9999";
       });
-    }
+    });
   </script>
 
+  <main role="main" aria-label="Game selection and deposit options">
+    <section class="games" aria-label="Game download links">
+      <form action="http://download.gamevault999.com" method="get" target="_blank" rel="noopener">
+        <button class="button" type="submit">🎮 GameVault</button>
+      </form>
+      <form action="http://m.lasvegassweeps.com" method="get" target="_blank" rel="noopener">
+        <button class="button" type="submit">🎰 Vegas Sweeps</button>
+      </form>
+      <form action="http://dl.highstakesweeps.com" method="get" target="_blank" rel="noopener">
+        <button class="button" type="submit">💰 Highstake Sweeps</button>
+      </form>
+      <form action="https://dl.juwa777.com" method="get" target="_blank" rel="noopener">
+        <button class="button" type="submit">🔥 Juwa</button>
+      </form>
+      <form action="https://pandamaster.vip:8888/index.html" method="get" target="_blank" rel="noopener">
+        <button class="button" type="submit">🐼 PandaMaster</button>
+      </form>
+      <form action="http://risingstar.vip:8580/index.html" method="get" target="_blank" rel="noopener">
+        <button class="button" type="submit">🌟 Rising Star</button>
+      </form>
+      <form action="http://start.firekirin.xyz:8580/index.html" method="get" target="_blank" rel="noopener">
+        <button class="button" type="submit">🐉 Fire Kirin</button>
+      </form>
+      <form action="http://start.orionstars.vip:8580/index.html" method="get" target="_blank" rel="noopener">
+        <button class="button" type="submit">🌌 OrionStars</button>
+      </form>
+      <form action="https://milkywayapp.xyz" method="get" target="_blank" rel="noopener">
+        <button class="button" type="submit">🚀 MilkyWay</button>
+      </form>
+      <form action="http://www.vblink777.club" method="get" target="_blank" rel="noopener">
+        <button class="button" type="submit">🎰 VBlink</button>
+      </form>
+      <form action="http://www.ultrapanda.mobi/" method="get" target="_blank" rel="noopener">
+        <button class="button" type="submit">🐼 UltraPanda</button>
+      </form>
+      <form action="https://bet777.eu/play/?" method="get" target="_blank" rel="noopener">
+        <button class="button" type="submit">💵 RiverSweeps</button>
+      </form>
+      <form action="https://m.gamesirius999.com" method="get" target="_blank" rel="noopener">
+        <button class="button" type="submit">🌠 Sirius</button>
+      </form>
+      <form action="http://www.cashmachine777.com" method="get" target="_blank" rel="noopener">
+        <button class="button" type="submit">💸 CashMachine</button>
+      </form>
+    </section>
+  </main>
+  <hr class="separator" aria-hidden="true" />
+
+  <button class="contact-float" aria-haspopup="dialog" aria-expanded="false" aria-controls="contactModal" onclick="toggleContact()" type="button">
+    💬 Help / Contact Manager
+  </button>
+
+  <div class="contact-modal" id="contactModal">
+    <div class="close-btn" onclick="toggleContact()">✖</div>
+    <h3 style="margin-top: 0;">Contact Us</h3>
+    <form id="contact-form" action="https://hook.us2.make.com/v94rsb6snmie4hgs405jxn9z4c2cdt04" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+      <button class="button" type="submit" style="width: 100%;">📨 Send</button>
+    </form>
+    <p id="thank-you"></p>
+  </div>
+
+  <script>
+    function toggleContact() {
+      const modal = document.getElementById("contactModal");
+      modal.style.display = modal.style.display === "block" ? "none" : "block";
+    }
+
+    function toggleFreeplay() {
+      const section = document.getElementById("freeplay-section");
+      section.style.display = section.style.display === "block" ? "none" : "block";
+    }
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const thankYou = document.getElementById('thank-you');
+      thankYou.style.display = 'none';
+      thankYou.className = '';
+      thankYou.textContent = '';
+      const formData = new FormData(form);
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          thankYou.textContent = "✅ Thank you! We'll get back to you soon. Please expect our response in your email.";
+          thankYou.className = "success";
+          thankYou.style.display = "block";
+          form.reset();
+        } else {
+          thankYou.textContent = "❌ Something went wrong. Please try again.";
+          thankYou.className = "error";
+          thankYou.style.display = "block";
+        }
+      }).catch(() => {
+        thankYou.textContent = "❌ Network error. Please try again.";
+        thankYou.className = "error";
+        thankYou.style.display = "block";
+      });
+    });
+  </script>
 </body>
+
 </html>
