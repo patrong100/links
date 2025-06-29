@@ -307,6 +307,10 @@
       text-align: center;
     }
 
+    .footer-spacer {
+      height: 120px;
+    }
+
     /* Responsive tweaks */
     @media (max-width: 480px) {
       .games {
@@ -333,21 +337,10 @@
         gap: 20px;
       }
 
-      .contact-modal input,
-      .contact-modal textarea {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 14px;
-        border-radius: 8px;
-        border: none;
-        background-color: #2a3146;
-        color: #d8d6c9;
-        font-size: 1rem;
-        font-family: 'Open Sans', sans-serif;
-        resize: vertical;
-        transition: background-color 0.3s ease;
+      .footer-spacer {
+        height: 160px;
+        /* Extra space for stacked or larger buttons on small screens */
       }
-    }
   </style>
 </head>
 
@@ -360,13 +353,10 @@
     </div>
   </header>
 
-  <section style="width: 100%; padding:1.25rem 0 0 0;; box-sizing: border-box;">
-    <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
-      <a href="https://t.me/patrongaming" target="_blank" rel="noopener" style="display: inline-block; text-align: center; padding: 15px 20px; 
-             font-size: 1rem; color: white; background-color: #0088cc; 
-             border: none; border-radius: 8px; text-decoration: none;
-             max-width: 100%; box-sizing: border-box;">
-        📨 If our Facebook goes Down, Please Join Us on Telegram. 📨
+  <section>
+    <div class="action-buttons">
+      <a href="https://signal.me/#eu/tCklnJ6vsDlYKcE8FaukeZWLR76RM-o5xRrqoto6oZJfTQS37itBP7EsEHsgacQg" target="_blank" rel="noopener" class="button" style="font-size: 1.2rem; border: 3px solid #4aa1f3; background-color: #1f2937; text-shadow: none;">
+        📶 Click to Connect via Signal
       </a>
     </div>
   </section>
@@ -376,87 +366,19 @@
       <button class="button" type="submit">💳 Deposit Now</button>
     </form>
 
-    <div class="freeplay-toggle" aria-label="Claim freeplay toggle button">
-      <button class="button" type="button" onclick="toggleFreeplay()">🎁 Claim Freeplay</button>
+    <!-- Become a Member Button -->
+    <div class="freeplay-toggle" aria-label="Become a Member">
+      <button class="button" type="button" onclick="toggleMember()">🧾 Become a Member</button>
     </div>
+
   </section>
 
-  <section id="freeplay-section" class="contact-modal" aria-live="polite" aria-hidden="true" tabindex="-1">
-    <div class="close-btn" onclick="toggleFreeplay()">✖</div>
-    <h3>Freeplay Form:</h3>
-    <p>Please fill out the form below to claim your freeplay:</p>
-    <form id="freeplay-form" action="https://formsubmit.co/ajax/gamingwithpatron@gmail.com" method="POST">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="tel" name="phone" placeholder="Phone Number" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <input type="text" name="telegram" placeholder="Telegram Username" required>
-      <button class="button" type="submit">Submit</button>
-    </form>
-    <p id="freeplay-thank-you" style="
-    display: none;
-    color: #9fdf9f;
-    font-weight: 700;
-    margin-top: 18px;
-    text-align: center;
-    animation: fadeIn 0.5s ease forwards;
-  ">
-      ✅ Thank you! Your Freeplay request has been received.
-    </p>
-  </section>
-
-  <style>
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
-
-  <script>
-    function toggleFreeplay() {
-      const section = document.getElementById("freeplay-section");
-      section.style.display = section.style.display === "block" ? "none" : "block";
-    }
-    document.getElementById('freeplay-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const form = e.target;
-      const thankYou = document.getElementById('freeplay-thank-you');
-      thankYou.style.display = 'none';
-      const formData = new FormData(form);
-      fetch(form.action, {
-        method: "POST",
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      }).then(response => {
-        if (response.ok) {
-          thankYou.textContent = "✅ Thank you! Your Freeplay request has been received. Please send a screenshot of your Telegram profile to us.";
-          thankYou.style.display = "block";
-          form.reset();
-          setTimeout(() => {
-            toggleFreeplay();
-            thankYou.style.display = "none";
-          }, 4000);
-        } else {
-          thankYou.textContent = "❌ Something went wrong. Please try again.";
-          thankYou.style.display = "block";
-          thankYou.style.color = "#ff9999";
-        }
-      }).catch(() => {
-        thankYou.textContent = "❌ Network error. Please try again.";
-        thankYou.style.display = "block";
-        thankYou.style.color = "#ff9999";
-      });
-    });
-  </script>
+  <!--   <section id="freeplay-section" class="freeplay" aria-live="polite" aria-hidden="true" tabindex="-1">
+    <h3>Report Fake Facebook Pages</h3>
+    <p>Please report the following pages and send us a screenshot to claim your freeplay:</p>
+          <p><a href="https://www.facebook.com/patrongaming55" target="_blank">📌 Fake Patron Gaming Page</a></p>
+    <p><a href="https://www.facebook.com/sakuragamestationn/" target="_blank">⚠️ Malicious Actor</a></p>
+  </section> -->
 
   <main role="main" aria-label="Game selection and deposit options">
     <section class="games" aria-label="Game download links">
@@ -503,16 +425,50 @@
         <button class="button" type="submit">💸 CashMachine</button>
       </form>
     </section>
-  </main>
-  <hr class="separator" aria-hidden="true" />
 
+    <hr class="separator" aria-hidden="true" />
+
+    <!--      <section>
+      <div class="action-buttons">
+    <a href="https://t.me/whitetiger320" target="_blank" rel="noopener" class="button">📨 Facebook is currently Down. Please check your Email (including Spam/Junk) & Join Us on Telegram 📨 </a>
+  </div>
+      </section> -->
+
+  </main>
+
+  <!-- Existing Help/Contact Manager Button -->
+  <button class="contact-float" aria-haspopup="dialog" aria-expanded="false" aria-controls="contactModal" onclick="toggleContact()" type="button">
+    💬 Help / Contact Manager
+  </button>
+
+  <!-- Contact Agent Button -->
+  <button class="contact-float" style="bottom: 90px; background-color: #2e8b57;" onclick="toggleAgent()">
+    🧑‍💼 Contact Kyle
+  </button>
+
+  <!-- Become a Member Modal -->
+  <div class="contact-modal" id="memberModal">
+    <div class="close-btn" onclick="toggleMember()">✖</div>
+    <h3 style="margin-top: 0;">Become a Member</h3>
+    <form id="member-form" action="https://formsubmit.co/patrongmembers@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="text" name="signal" placeholder="Signal Username" required>
+      <button class="button" type="submit">✅ Claim 5 Free Points</button>
+    </form>
+    <p id="member-thank-you"></p>
+  </div>
+
+  <!-- Manager Contact Modal -->
   <button class="contact-float" aria-haspopup="dialog" aria-expanded="false" aria-controls="contactModal" onclick="toggleContact()" type="button">
     💬 Help / Contact Manager
   </button>
 
   <div class="contact-modal" id="contactModal">
     <div class="close-btn" onclick="toggleContact()">✖</div>
-    <h3 style="margin-top: 0;">Contact Us</h3>
+    <h3 style="margin-top: 0;">Contact Manager</h3>
     <form id="contact-form" action="https://hook.us2.make.com/v94rsb6snmie4hgs405jxn9z4c2cdt04" method="POST">
       <input type="hidden" name="_captcha" value="false">
       <input type="text" name="name" placeholder="Your Name" required>
@@ -523,47 +479,194 @@
     <p id="thank-you"></p>
   </div>
 
+  <!-- Contact Agent Modal -->
+  <div class="contact-modal" id="agentModal">
+    <div class="close-btn" onclick="toggleAgent()">✖</div>
+    <h3 style="margin-top: 0;">Contact Kyle</h3>
+    <form id="agent-form" action="https://formsubmit.co/patrongaming777@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="text" name="username" placeholder="Your Username" required>
+      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+      <button class="button" type="submit">📨 Send</button>
+    </form>
+
+    <p id="agent-thank-you"></p>
+  </div>
+
+  <!-- Social Buttons -->
+  <section class="action-buttons">
+    <!--         <a class="button" href="#" onclick="notifyLink('https://facebook.com/yourpage')" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" style="width: 20px; height: 20px;">
+      Connect via Facebook (Coming Soon)
+    </a> -->
+
+    <a class="button" href="#" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Logo_de_Facebook.png" alt="WhatsApp" style="width: 20px; height: 20px;">
+      Couldn't find our Facebook? Contact Us via Telegram or Signal or Kyle or Manager.
+    </a>
+
+    <a class="button" href="https://t.me/patrongaming777" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" style="width: 20px; height: 20px;">
+      Join us on Telegram
+    </a>
+
+    <a class="button" href="https://signal.me/#eu/tCklnJ6vsDlYKcE8FaukeZWLR76RM-o5xRrqoto6oZJfTQS37itBP7EsEHsgacQg" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Signal-Logo.svg" alt="Signal" style="width: 20px; height: 20px; border-radius: 4px;">
+      Message via Signal
+    </a>
+
+  </section>
+  <section class="action-buttons" style="margin-top: 20px;">
+    <button onclick="toggleReport()" style="
+    background-color: transparent;
+    color: #aaa;
+    border: 1px solid #444;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;">
+      Report This Page
+    </button>
+  </section>
+
+  <!-- Footer + Report Page -->
+  <footer style="margin-top: 40px; padding: 20px; background: #111820; color: #aaa; text-align: center; font-size: 0.9rem;">
+    <p>&copy; 2025 White Tiger Gaming. All rights reserved.</p>
+  </footer>
+
+  <div class="contact-modal" id="reportModal" style="
+  background: #1a1a1a;
+  border: 1px solid #444;
+  box-shadow: none;
+  color: #ddd;
+  font-size: 0.95rem;
+">
+    <div class="close-btn" onclick="toggleReport()">✖</div>
+    <h3 style="margin-top: 0; font-size: 1.2rem; color: #ccc; font-weight: 600;">Report this Page</h3>
+    <form id="report-form" action="https://formsubmit.co/patrongaming777@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="legalname" placeholder="Legal Name" required style="
+      background-color: #2b2b2b;
+      color: #eee;
+      border: 1px solid #555;
+      font-size: 0.95rem;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 12px;
+      width: 100%;
+    ">
+      <input type="text" name="phone" placeholder="Phone Number" required style="
+      background-color: #2b2b2b;
+      color: #eee;
+      border: 1px solid #555;
+      font-size: 0.95rem;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 12px;
+      width: 100%;
+    ">
+      <input type="email" name="email" placeholder="Email Address" required style="
+      background-color: #2b2b2b;
+      color: #eee;
+      border: 1px solid #555;
+      font-size: 0.95rem;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 12px;
+      width: 100%;
+    ">
+      <textarea name="reason" rows="3" placeholder="Reason for reporting" required style="
+      background-color: #2b2b2b;
+      color: #eee;
+      border: 1px solid #555;
+      font-size: 0.95rem;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 14px;
+      width: 100%;
+      resize: vertical;
+    "></textarea>
+      <button type="submit" style="
+      background-color: #444;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      width: 100%;
+    ">
+        Submit Report
+      </button>
+    </form>
+    <p id="report-thank-you" style="display: none; margin-top: 14px;"></p>
+  </div>
+
   <script>
     function toggleContact() {
       const modal = document.getElementById("contactModal");
       modal.style.display = modal.style.display === "block" ? "none" : "block";
     }
 
-    function toggleFreeplay() {
-      const section = document.getElementById("freeplay-section");
-      section.style.display = section.style.display === "block" ? "none" : "block";
+    function toggleMember() {
+      const modal = document.getElementById("memberModal");
+      modal.style.display = modal.style.display === "block" ? "none" : "block";
     }
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const form = e.target;
-      const thankYou = document.getElementById('thank-you');
-      thankYou.style.display = 'none';
-      thankYou.className = '';
-      thankYou.textContent = '';
-      const formData = new FormData(form);
-      fetch(form.action, {
-        method: "POST",
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      }).then(response => {
-        if (response.ok) {
-          thankYou.textContent = "✅ Thank you! We'll get back to you soon. Please expect our response in your email.";
-          thankYou.className = "success";
-          thankYou.style.display = "block";
+
+    function toggleAgent() {
+      const modal = document.getElementById("agentModal");
+      modal.style.display = modal.style.display === "block" ? "none" : "block";
+    }
+
+    function toggleReport() {
+      const modal = document.getElementById("reportModal");
+      modal.style.display = modal.style.display === "block" ? "none" : "block";
+    }
+
+    function notifyLink(url) {
+      alert("🔗 Redirecting to: " + url);
+      window.open(url, '_blank');
+    }
+
+    function attachFormHandler(formId, msgId, successMsg) {
+      const form = document.getElementById(formId);
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const message = document.getElementById(msgId);
+        message.style.display = "none";
+        const formData = new FormData(form);
+        fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        }).then(response => {
+          message.textContent = response.ok ? successMsg : "❌ Failed to send request.";
+          message.style.display = "block";
           form.reset();
-        } else {
-          thankYou.textContent = "❌ Something went wrong. Please try again.";
-          thankYou.className = "error";
-          thankYou.style.display = "block";
-        }
-      }).catch(() => {
-        thankYou.textContent = "❌ Network error. Please try again.";
-        thankYou.className = "error";
-        thankYou.style.display = "block";
+          // Auto-hide the modal and thank you message after 3 seconds
+          setTimeout(() => {
+            message.style.display = "none";
+            const modal = form.closest('.contact-modal');
+            if (modal) modal.style.display = "none";
+          }, 2000);
+        }).catch(() => {
+          message.textContent = "❌ Network error. Please try again.";
+          message.style.display = "block";
+        });
       });
-    });
+    }
+    // Attach handlers for all forms
+    attachFormHandler("contact-form", "thank-you", "✅ Message sent to Manager successfully.");
+    attachFormHandler("agent-form", "agent-thank-you", "✅ Message sent to Agent successfully.");
+    attachFormHandler("report-form", "report-thank-you", "Report Sent.");
+    attachFormHandler("member-form", "member-thank-you", "✅ Request Submitted. Please Contact Agent for Update.");
   </script>
 </body>
 
