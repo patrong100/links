@@ -179,9 +179,8 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("✅ DOM fully loaded, script running");
+  console.log("✅ DOM fully loaded");
 
-  // Decode sensitive data
   const decode = (encoded, isHex = false) => {
     if (isHex) {
       let str = '';
@@ -219,7 +218,6 @@ document.addEventListener("DOMContentLoaded", function () {
     facebookAlert: decode('aHR0cHM6Ly9mYWNlYm9vay5jb20v', true)
   };
 
-  // Set up URLs
   document.getElementById('signal-link').href = resources.signal;
   document.getElementById('signal-link2').href = resources.signal;
   document.getElementById('deposit-form').action = resources.deposit;
@@ -234,7 +232,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById(`game${i + 1}`).action = resources.games[i];
   }
 
-  // Modal toggle function with scroll lock
   const toggleModal = (modalId) => {
     const modal = document.getElementById(modalId);
     if (!modal) return;
@@ -244,13 +241,13 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Toggled modal:", modalId);
   };
 
-  // Attach both click and touchend
   const attachToggle = (buttonId, modalId) => {
     const btn = document.getElementById(buttonId);
     if (!btn) return;
-    ['click', 'touchend'].forEach(evt =>
-      btn.addEventListener(evt, () => toggleModal(modalId))
-    );
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleModal(modalId);
+    });
   };
 
   attachToggle('contact-manager', 'contactModal');
@@ -258,15 +255,11 @@ document.addEventListener("DOMContentLoaded", function () {
   attachToggle('member-toggle', 'memberModal');
   attachToggle('report-button', 'reportModal');
 
-  // Close buttons inside modals
   document.querySelectorAll('.close-btn').forEach(btn => {
     const modalId = btn.getAttribute('data-modal');
-    ['click', 'touchend'].forEach(evt =>
-      btn.addEventListener(evt, () => toggleModal(modalId))
-    );
+    btn.addEventListener('click', () => toggleModal(modalId));
   });
 
-  // Form submission handler
   const attachFormHandler = (formId, msgId, successMsg) => {
     const form = document.getElementById(formId);
     if (!form) return;
