@@ -17,7 +17,19 @@ document.addEventListener("DOMContentLoaded", function () {
     deposit: decode('aHR0cHM6Ly9zYWxsYXBheS5wcm8vMzgyL3B1cmNoYXNl'),
     games: [
       decode('aHR0cDovL2Rvd25sb2FkLmdhbWV2YXVsdDk5OS5jb20='),
-      // ... other game URLs ...
+      decode('aHR0cDovL20ubGFzdmVnYXNzd2VlcHMuY29t'),
+      decode('aHR0cDovL2RsLmhpZ2hzdGFrZXN3ZWVwcy5jb20='),
+      decode('aHR0cHM6Ly9kbC5qdXdhNzc3LmNvbQ=='),
+      decode('aHR0cHM6Ly9wYW5kYW1hc3Rlci52aXA6ODg4OC9pbmRleC5odG1s'),
+      decode('aHR0cDovL3Jpc2luZ3N0YXIudmlwOjg1ODAvaW5kZXguaHRtbA=='),
+      decode('aHR0cDovL3N0YXJ0LmZpcmVraXJpbi54eXo6ODU4MC9pbmRleC5odG1s'),
+      decode('aHR0cDovL3N0YXJ0Lm9yaW9uc3RhcnMudmlwOjg1ODAvaW5kZXguaHRtbA=='),
+      decode('aHR0cHM6Ly9taWxreXdheWFwcC54eXo='),
+      decode('aHR0cHM6Ly93d3cudmJsaW5rNzc3LmNsdWI='),
+      decode('aHR0cDovL3d3dy51bHRyYXBhbmRhLm1vYmkv'),
+      decode('aHR0cHM6Ly9iZXQ3NzcuZXUvcGxheS8/'),
+      decode('aHR0cHM6Ly9tLmdhbWVzaXJpdXM5OTkuY29t'),
+      decode('aHR0cDovL3d3dy5jYXNobWFjaGluZTc3Ny5jb20=')
     ],
     telegram: decode('aHR0cHM6Ly90Lm1lL3BhdHJvbmdhbWluZzc3Nw=='),
     memberForm: decode('aHR0cHM6Ly9mb3Jtc3VibWl0LmNvL2FqYXgvcGF0cm9uZ21lbWJlcnNAZ21haWwuY29t'),
