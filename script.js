@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const resources = {
     signal: decode('aHR0cHM6Ly9zaWduYWwubWUvI2V1L3RDa2xuSjZ2c0RsWUtjRThGYXVrZVpXTFI3NlJNLW81eFJycW90bzZvWkpmVFFTMzdpdEJQN0VzRUhzZ2FjUWc='),
-    deposit: decode('aHR0cHM6Ly9zYWxsYXBheS5wcm8vMzgyL3B1cmNoYXNl'),
+    deposit: decode('aHR0cHM6Ly90aGVzb2xhci5nbG9iYWwvTXpneS9idXk='),
     games: [
       decode('aHR0cDovL2Rvd25sb2FkLmdhbWV2YXVsdDk5OS5jb20='),
       decode('aHR0cDovL20ubGFzdmVnYXNzd2VlcHMuY29t'),
